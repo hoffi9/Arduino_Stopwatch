@@ -2,7 +2,7 @@
 # include <OneButton.h>
 int TASTER_START_STOP = 7;
 int TASTER_RESET = 8;
-float REFRESH_CYCLE = 1000; //Zeit in ms, nach der Bild neu geschrieben wird bei running
+float REFRESH_CYCLE = 500; //Zeit in ms, nach der Bild neu geschrieben wird im State running
 
 // Name des Tasters (Constructor)
 OneButton StartStopTaster(TASTER_START_STOP, true, true);
@@ -101,7 +101,7 @@ void einKlick1()
   Serial.println("Case 3");
     //Uhr soll weiterlaufen, also state=2=run
     StopWatchState=2;
-    // Hier noch einfügen, das Pin1 der Stopuhr gereiszt werden muss
+    // Hier noch einfügen, dass Pin1 der Stopuhr gereizt werden muss
 
     break;
 
