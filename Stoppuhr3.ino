@@ -24,7 +24,7 @@ bool Anzeige = true;
 // TasterStatus sorgt für Start/Neustart
 
 int StopWatchState = 1; //1 Reset, 2 run, 3 stop 
-String LaufZeitFreeze = "0";
+float LaufZeitFreeze = 0;
 
 void setup() {
  // set up the LCD's number of columns and rows:
@@ -66,12 +66,12 @@ void loop() {
  delay(10);
  if ((StopWatchState == 2) and (LetzerRefreshBildschirm - millis()<REFRESH_CYCLE))  {
   LetzerRefreshBildschirm = millis();
-  Serial.print("Ausgabe: ");
-  Serial.println(LetzerRefreshBildschirm);
+  //Serial.print("Ausgabe: ");
+  //Serial.println(LetzerRefreshBildschirm);
   // Ausgabe LCD
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print(LaufZeit() + " s");
+  lcd.print(Ausgabe(LaufZeit(StartZeit)) + " s");
   lcd.setCursor(0, 1);
   lcd.print("laeuft...");
  }
@@ -88,10 +88,10 @@ void einKlick1()
     break;
   case 2: //run
     Serial.println("Case 2");
-    LaufZeitFreeze = LaufZeit();
+    LaufZeitFreeze = LaufZeit(StartZeit);
     lcd.clear();
     lcd.setCursor(0, 0);
-    lcd.print(LaufZeitFreeze + " s");
+    lcd.print(Ausgabe(LaufZeitFreeze) + " s");
     lcd.setCursor(0, 1);
     lcd.print("angehalten");
 
@@ -100,6 +100,10 @@ void einKlick1()
   case 3://stop
   Serial.println("Case 3");
     //Uhr soll weiterlaufen, also state=2=run
+    StartZeit = millis()-LaufZeitFreeze*1000;
+//    Serial.println(StartZeit);
+//    Serial.println(millis());
+//    Serial.println(LaufZeitFreeze);
     StopWatchState=2;
     // Hier noch einfügen, dass Pin1 der Stopuhr gereizt werden muss
 
@@ -119,13 +123,20 @@ void einKlick2()
   //Hier noch einfügen, dass Pin3 der Stoppuhr gereizt werden muss
 }
 
-String LaufZeit(){
+float LaufZeit(float lokStartZeit){
  // Zeit berechnen
- float Sekunden;
+ //float Sekunden;
  //String Ergebnis; 
- VerstricheneZeit = millis() - StartZeit;
+ Serial.println(lokStartZeit);
+ Serial.println(millis());
+ VerstricheneZeit = millis() - lokStartZeit; //millis()-(millis()-Laufzeitfreeze)
  Sekunden = VerstricheneZeit / 1000;
- String GesamtSekunden = String(Sekunden);
+
+ return Sekunden;
+}
+
+String Ausgabe(float value){
+ String GesamtSekunden = String(value);
  // . durch , ersetzen
  GesamtSekunden.replace(".", ",");
  // Ausgabe im Seriellen Monitor
@@ -139,4 +150,3 @@ String LaufZeit(){
  //Ergebnis = AnzahlSekunden;
  return AnzahlSekunden;
 }
- 
