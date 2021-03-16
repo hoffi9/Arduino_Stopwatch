@@ -1,3 +1,1 @@
 1. Aktuell wird bei jedem Durchlauf der Bildschirm refreshed
-2. Stoppen und erneutes Startet, zählt die Zeit nicht erst nach dem Starten weiter, sondern die Zeit scheint intern bereits weitergelaufen zu sein.
-	Zeit muss bei Stop gesichert werden und erst beim Reset wieder auf 0 und weiterlauf beim gesicherten Stand weiterlaufen
