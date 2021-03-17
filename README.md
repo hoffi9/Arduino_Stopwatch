@@ -4,7 +4,7 @@ Stopwatch mit einem Arduino Nano und einer externen Stoppuhr (die einfach da war
 Das soll das Projekt können:
 Realisiert soll über den Nano eine Stoppuhr mit zwei Buttons:
 Button A soll toggeln zwischen start und stop, ohne Reset wird bei starten immer beim alten Wert weiter gezählt.
-	Das soll später über den "Schlagkopf" passieren.
+	Das soll später über den "Schlagknopf" passieren.
 Button B soll nur dem Reset dienen.
 
 Startverhalten:
