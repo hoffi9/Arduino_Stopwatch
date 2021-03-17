@@ -69,11 +69,10 @@ void loop() {
   //Serial.print("Ausgabe: ");
   //Serial.println(LetzerRefreshBildschirm);
   // Ausgabe LCD
-  lcd.clear();
+  //lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print(Ausgabe(LaufZeit(StartZeit)) + " s");
-  lcd.setCursor(0, 1);
-  lcd.print("laeuft...");
+  lcd.print(Ausgabe(LaufZeit(StartZeit)) + " s          ");
+
  }
 }
 
@@ -84,6 +83,8 @@ void einKlick1()
     Serial.println("Case 1");
     StartZeit = millis();
     LetzerRefreshBildschirm = StartZeit;
+    lcd.setCursor(0, 1);
+    lcd.print("laeuft...       ");
     StopWatchState=2;
     break;
   case 2: //run
@@ -93,7 +94,7 @@ void einKlick1()
     lcd.setCursor(0, 0);
     lcd.print(Ausgabe(LaufZeitFreeze) + " s");
     lcd.setCursor(0, 1);
-    lcd.print("angehalten");
+    lcd.print("angehalten      ");
 
     StopWatchState=3;
     break;
@@ -104,6 +105,8 @@ void einKlick1()
 //    Serial.println(StartZeit);
 //    Serial.println(millis());
 //    Serial.println(LaufZeitFreeze);
+    lcd.setCursor(0, 1);
+    lcd.print("laeuft...       ");
     StopWatchState=2;
     // Hier noch einfügen, dass Pin1 der Stopuhr gereizt werden muss
 
