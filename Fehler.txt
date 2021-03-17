@@ -1,2 +1,2 @@
-1. Aktuell wird bei jedem Durchlauf der Bildschirm refreshed
-Bei Laufzeit >10s steht ein Doppel-s nach einem Reset , da scheinbar die Zeile nicht gelöscht wird.
+1. gefixt - Aktuell wird bei jedem Durchlauf der Bildschirm refreshed
+2. gefixt - Bei Laufzeit >10s steht ein Doppel-s nach einem Reset , da scheinbar die Zeile nicht gelöscht wird.

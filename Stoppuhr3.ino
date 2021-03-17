@@ -2,7 +2,7 @@
 # include <OneButton.h>
 int TASTER_START_STOP = 7;
 int TASTER_RESET = 8;
-float REFRESH_CYCLE = 500; //Zeit in ms, nach der Bild neu geschrieben wird im State running
+float REFRESH_CYCLE = 100; //Zeit in ms, nach der Bild neu geschrieben wird im State running
 
 // Name des Tasters (Constructor)
 OneButton StartStopTaster(TASTER_START_STOP, true, true);
@@ -64,7 +64,7 @@ void loop() {
  StartStopTaster.tick();
  ResetTaster.tick();
  delay(10);
- if ((StopWatchState == 2) and (LetzerRefreshBildschirm - millis()<REFRESH_CYCLE))  {
+ if ((StopWatchState == 2) and (millis()-LetzerRefreshBildschirm >REFRESH_CYCLE))  {
   LetzerRefreshBildschirm = millis();
   //Serial.print("Ausgabe: ");
   //Serial.println(LetzerRefreshBildschirm);
@@ -115,6 +115,7 @@ void einKlick1()
 
 void einKlick2()
 {
+  lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("0.00 s");
   lcd.setCursor(0, 1);
