@@ -1,1 +1,1 @@
-- Anbindung und Anstuerung der drei Taster über die Relais.
+- Erweiterung für Beleuchtung

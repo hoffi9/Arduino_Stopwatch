@@ -3,9 +3,9 @@
 int TASTER_START_STOP = 7;
 int TASTER_RESET = 8;
 float REFRESH_CYCLE = 100; //Zeit in ms, nach der Bild neu geschrieben wird im State running
-const int Pin_TasteS1  = 9;
-const int Pin_TasteS2  = 10;
-const int Pin_TasteS3  = 6;
+const int Pin_TasteS1  = 9; //Start
+const int Pin_TasteS2  = 10; //Stop
+const int Pin_TasteS3  = 6; //Reset
 
 
 // Name des Tasters (Constructor)
